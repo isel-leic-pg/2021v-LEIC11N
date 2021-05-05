@@ -16,21 +16,20 @@ private fun Motion.toColor() = when {
 }
 
 fun main() {
+    var ball: Ball? = null
     onStart {
         val cv = Canvas(400,300, CYAN)
-        var ball: Ball? = null
         cv.drawBall(ball)
         cv.onTimeProgress(20) {
             ball = ball?.move(cv.width,cv.height)
             cv.drawBall(ball)
         }
         cv.onKeyPressed {
-            ball = ball?.processKey(it.char)?.processCursor(it.code)
+            ball = ball.processKey(it.char)?.processCursor(it.code)
             if (it.code== ESCAPE_CODE) cv.close()
-            //if (it.char=='b' && ball==null)  ball = Ball( Position(100,150), Motion(+2,+2) ,RADIUS)
         }
         cv.onMouseDown {
-            ball = ball.copy( position = Position(it.x, it.y))
+            ball = ball?.copy( position = Position(it.x, it.y))
         }
     }
     onFinish { println("Bye") }
