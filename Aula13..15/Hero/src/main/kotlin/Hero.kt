@@ -25,18 +25,23 @@ fun Canvas.drawHero(hero: Hero) {
     val x = hero.position.x * CELL_SIDE - hero.stepAnim * (CELL_SIDE / STEPS_ANIM) * hero.dir.dx()
     val y = hero.position.y * CELL_SIDE - hero.stepAnim * (CELL_SIDE / STEPS_ANIM) * hero.dir.dy()
     val xSprite = hero.stepAnim % 4
-    val ySprite = (hero.dir ?: Direction.DOWN).ordinal
+    val ySprite = when (hero.dir) {
+        Direction.DOWN, null -> 0
+        Direction.LEFT, Direction.LEFT_UP, Direction.LEFT_DOWN -> 1
+        Direction.RIGHT, Direction.RIGHT_UP, Direction.RIGHT_DOWN -> 2
+        Direction.UP -> 3
+    }
     drawImage("Hero.png|${xSprite * SPRITE_DIV},${ySprite * SPRITE_DIV},64,64", x, y, CELL_SIDE, CELL_SIDE)
 }
 
-
 fun main() {
+    //ALL_POSITION.forEach { println(it) }
     onStart {
         val cv = Canvas(GRID_WIDTH*CELL_SIDE,GRID_HEIGHT*CELL_SIDE, BLACK)
         var hero = Hero( Position(GRID_WIDTH/2,GRID_HEIGHT/2) )
         cv.drawArena(hero)
-        cv.onKeyPressed { ke ->
-            hero = hero.move(ke.code)
+        cv.onKeyPressed { ke:KeyEvent ->
+            hero = hero.move(ke)
             cv.drawArena(hero)
         }
         cv.onTimeProgress(50) {
@@ -49,11 +54,13 @@ fun main() {
     onFinish {  }
 }
 
-fun Hero.move(key: Int): Hero {
-    val dir = directionOf(key) ?: return this
+fun Hero.move(key: KeyEvent): Hero {
+    if (key.char=='*') return Hero( randomPosition(position) )
+    val dir = directionOf(key.code) ?: return this
     val pos = position + dir
     return if ( pos.isValid() ) Hero(pos,STEPS_ANIM,dir) else this
 }
+
 
 fun Canvas.drawGrid() {
     (CELL_SIDE..width step CELL_SIDE).forEach { x ->
