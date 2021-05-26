@@ -61,7 +61,6 @@ fun Hero.move(key: KeyEvent): Hero {
     return if ( pos.isValid() ) Hero(pos,STEPS_ANIM,dir) else this
 }
 
-
 fun Canvas.drawGrid() {
     (CELL_SIDE..width step CELL_SIDE).forEach { x ->
         drawLine(x, 0, x, height, WHITE, 1)
