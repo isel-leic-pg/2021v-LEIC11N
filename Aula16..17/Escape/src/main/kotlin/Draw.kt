@@ -8,6 +8,11 @@ fun Canvas.drawArena(game: Game) {
     game.robots.forEach {
         drawActor(it, "robot", game.stepAnim)
     }
+    game.junks.forEach { drawJunk(it) }
+}
+
+private fun Canvas.drawJunk(p:Position) {
+    drawImage("junk", p.x * CELL_SIDE, p.y * CELL_SIDE, CELL_SIDE, CELL_SIDE)
 }
 
 private fun Canvas.drawActor(actor: Actor, imageName:String, stepAnim: Int) {

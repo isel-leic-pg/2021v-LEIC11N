@@ -12,6 +12,8 @@ fun main() {
         cv.onTimeProgress(50) {
             if (game.stepAnim > 0) {
                 game = game.copy(stepAnim = game.stepAnim - 1)
+                if (game.stepAnim==0)
+                    game = game.collisions()
                 cv.drawArena(game)
             }
         }
