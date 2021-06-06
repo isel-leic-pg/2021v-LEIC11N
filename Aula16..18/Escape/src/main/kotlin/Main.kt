@@ -2,7 +2,7 @@ import pt.isel.canvas.*
 
 fun main() {
     onStart {
-        val cv = Canvas(GRID_WIDTH * CELL_SIDE, GRID_HEIGHT * CELL_SIDE, BLACK)
+        val cv = Canvas(GRID_WIDTH * CELL_SIDE, GRID_HEIGHT * CELL_SIDE + STATUS_BAR_HEIGHT, BLACK)
         var game = createGame()
         cv.drawArena(game)
         cv.onKeyPressed { ke: KeyEvent ->

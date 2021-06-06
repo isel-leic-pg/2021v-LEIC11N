@@ -1,14 +1,26 @@
 import pt.isel.canvas.Canvas
 import pt.isel.canvas.WHITE
+import pt.isel.canvas.YELLOW
+
+const val STATUS_BAR_HEIGHT = CELL_SIDE
+const val TEXT_BASE = 15
 
 fun Canvas.drawArena(game: Game) {
     erase()
     drawGrid()
-    drawActor(game.hero,"hero",game.stepAnim)
     game.robots.forEach {
         drawActor(it, "robot", game.stepAnim)
     }
     game.junks.forEach { drawJunk(it) }
+    drawActor(game.hero,"hero",game.stepAnim)
+    drawStatusBar(game)
+}
+
+private fun Canvas.drawStatusBar(g:Game) {
+    drawRect(0, height-STATUS_BAR_HEIGHT, width, STATUS_BAR_HEIGHT, 0x333333)
+    drawText(CELL_SIDE,height-TEXT_BASE,"Robots:${g.robots.size}", WHITE)
+    if ( g.state != Status.RUN )
+        drawText(width/2, height-TEXT_BASE, "You ${if(g.state==Status.WIN)"Win" else "lose"}", YELLOW)
 }
 
 private fun Canvas.drawJunk(p:Position) {
