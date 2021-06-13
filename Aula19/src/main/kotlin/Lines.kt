@@ -7,6 +7,12 @@ fun numberOfLines() :Int {
 
 fun readLines() :List<String> {
     var lines = emptyList<String>()
+    /*
+    do {
+        val line :String = readLine() ?: break
+        lines = lines + line
+    } while ( true )
+     */
     var line = readLine()
     while( line != null ) {
         lines = lines + line
@@ -21,8 +27,15 @@ fun readLines2() :List<String> {
         lines = lines + (readLine() ?: return lines)
 }
 
+fun readLines3() :List<String> {
+    val lines = mutableListOf<String>()
+    while( true )
+        //lines.add( readLine() ?: return lines )
+        lines += readLine() ?: return lines
+}
+
 fun main() {
-    readLines2().forEach(::println)
+    readLines3().forEach(::println)
     //val lines :List<String> = readLines()
     //lines.forEach(::println)
 

@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c30c7fd-88d3-46ad-bd12-a5f69f11a7ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Lusiadas.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Numbers.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Average.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Lines.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Sum2021.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Lines.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Lines.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,9 +82,9 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Kotlin.Sum2021Kt" />
       <item itemvalue="Kotlin.LinesKt" />
       <item itemvalue="Kotlin.AverageKt" />
-      <item itemvalue="Kotlin.Sum2021Kt" />
     </list>
     <recent_temporary>
       <list>
